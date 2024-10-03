@@ -1,18 +1,20 @@
 from PIL import Image
-def PNGtoJPEG():
-    inputImg = input("Enter img path: ")
-    img = Image.open(inputImg)
-    rgb_img = img.convert('RGB')
-    rgb_img.save('output_image.jpeg')
+inputImg = input("Enter img path: ")
+img = Image.open(inputImg)
 
-def PNGtoGIF():
-    inputImg = input("Enter img path: ")
-    img = Image.open(inputImg)
-    img.save('output_image.gif')
+def convert_to_JPEG():
+    format=img.format  
+    if format=="PNG":
+        rgb_img = img.convert('RGB')
+        rgb_img.save('output_image.jpeg')
+    elif format=="GIF":
+        img.save('output_image.gif')
+    elif format=="WEBP":
+        img.save("output_image.webp")
 
-usrInput=input("Enter conversion type: ")
-
-if usrInput=="JPEG":
-    PNGtoJPEG()
-elif usrInput=="GIF":
-    PNGtoGIF()
+def convert_from_JPEG():
+    format_to_convert=input("Enter which format to convert(PNG/GIF): ")
+    if format_to_convert=="PNG":
+        img.save("output_image.png")
+    if format_to_convert=="GIF":
+        img.save("output_image.GIF")
