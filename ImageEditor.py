@@ -1,7 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 
 def load_image(path):
-    """Load an image from a file."""
     try:
         img = Image.open(path)
         print(f"Image loaded: {path}")
@@ -11,7 +10,6 @@ def load_image(path):
         return None
 
 def save_image(img, path):
-    """Save an image to a file."""
     try:
         img.save(path)
         print(f"Image saved: {path}")
@@ -19,19 +17,15 @@ def save_image(img, path):
         print(f"Error: {e}")
 
 def resize_image(img, width, height):
-    """Resize the image."""
     return img.resize((width, height))
 
 def crop_image(img, left, top, right, bottom):
-    """Crop the image."""
     return img.crop((left, top, right, bottom))
 
 def rotate_image(img, angle):
-    """Rotate the image."""
     return img.rotate(angle)
 
 def flip_image(img, mode):
-    """Flip the image horizontally or vertically."""
     if mode == "horizontal":
         return img.transpose(Image.FLIP_LEFT_RIGHT)
     elif mode == "vertical":
@@ -41,11 +35,9 @@ def flip_image(img, mode):
         return img
 
 def apply_grayscale(img):
-    """Convert the image to grayscale."""
     return img.convert("L")
 
 def add_text(img, text, position, font_size=20, color="white"):
-    """Add text to an image."""
     draw = ImageDraw.Draw(img)
     try:
         font = ImageFont.truetype("arial.ttf", font_size)
@@ -58,7 +50,6 @@ def main():
     print("Basic Image Editor")
     print("===================")
 
-    # Load an image
     path = input("Enter the path to your image: ")
     img = load_image(path)
     if img is None:
